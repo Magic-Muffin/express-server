@@ -1,9 +1,27 @@
 <html lang="en">
 <head>
     <title>{{title}}</title>
+    <link href="/static/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="/static/main.css">
+    {{!-- <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous"> --}}
 </head>
 <body>
-    {{{body}}}
+    <header>
+        {{!-- <img src="/public/logo.jpg"> --}}
+        <nav>
+            <ul class="nav-bar">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Content</a></li>
+            </ul>
+        </nav>
+        <div>
+            <a id="login-button" href="#"><button>Login</button></a>
+            <a id="register-button" href="#"><button>Register</button></a>
+        </div> 
+    </header>
+    <div class="main">
+        {{{body}}}
+    </div>
 </body>
 </html>
