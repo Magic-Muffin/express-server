@@ -1,5 +1,8 @@
 body {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
+    justify-content: space-between;
     margin: 0;
     padding: 0;
     background: #666 url('/static/images/bg.jpg') no-repeat top left fixed;
@@ -21,6 +24,24 @@ header {
     align-items: center;
     padding: 15px 10%;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid #000;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #c0c3c5;
+    font: 700 small-caps 0.8rem Helvetica, Arial, sans-serif;
+    letter-spacing:2px;
+    margin: 0 0 0 0;
+    text-align: center;
+}
+
+.footer-container li {
+    list-style: none;
 }
 
 .blog-container {
