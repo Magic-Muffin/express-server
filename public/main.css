@@ -44,6 +44,42 @@ footer {
     list-style: none;
 }
 
+.container {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 20px  10%;
+    padding: 1% 1%;
+    background-color: aliceblue;
+    color: #000000;
+    border-radius: 15px;
+    box-shadow: 0px 5px 8px #000000;
+}
+
+.container > div a {
+    color: #000;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 1% 50% 1% 1%;
+}
+
+form > input {
+    border-radius: 5px;
+    margin: 2px;
+}
+
+form > #submit {
+    background-color: rgba(0, 136, 169, 1);
+    color: aliceblue;
+    box-decoration-break: unset;
+    border-width: 0;
+    padding: 1px;
+    width: 25%;
+    align-self: center;
+}
+
+
 .blog-container {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 20px  10%;
@@ -52,7 +88,6 @@ footer {
     color: #000000;
     border-radius: 15px;
     box-shadow: 0px 5px 8px #000000;
-    
 }
 
 .nav-bar {
