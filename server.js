@@ -1,14 +1,20 @@
-var env = require('dotenv').config();
-var express = require('express');
-var path = require('path');
-var hbs = require('express-handlebars');
-var app = express();
+const env = require('dotenv').config();
+const express = require('express');
+const path = require('path');
+const hbs = require('express-handlebars');
+const app = express();
 
+// Middleware
 app.use('/static', express.static(path.join(__dirname, '/public')))
+app.use(express.urlencoded({extended: true}));
+
+// View engine
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname+'/views/layouts'}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+
+// Routes
 app.get('/', (req, res)=>{
     res.render('index', {
         title: "Hello",
@@ -16,6 +22,37 @@ app.get('/', (req, res)=>{
     });
 });
 
+app.get('/register', (req, res)=>{
+    res.render('register',{
+        title: "Register"
+    });
+});
+
+app.post('/register', (req, res)=>{
+    if(req.body){
+        console.log(req.body);
+        res.redirect('/');
+    } else {
+        res.redirect('/register');
+    }
+});
+
+app.get('/login', (req, res)=>{
+    res.render('login',{
+        title: "Login"
+    });
+});
+
+app.post('/login', (req, res)=>{
+    if(req.body){
+        console.log(req.body);
+        res.redirect('/');
+    } else {
+        res.redirect('/login');
+    }
+});
+
+// Start server
 app.listen(3000, ()=>{
     console.log("Listening on port 3000")
 });
