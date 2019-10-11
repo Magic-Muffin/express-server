@@ -8,7 +8,7 @@ const cors = require('cors');
 const app = express();
 
 // Middleware
-app.use('/static', express.static(path.join(__dirname, '/public')))
+app.use('/static', express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cookieParser());
@@ -18,14 +18,16 @@ app.use(cors({
 }));
 
 app.use((req, res, next) => {
-    try {
-        const token = req.cookies.access_token;
-        const decoded = jwt.verify(token, process.env.COOKIE_SECRET);
-        console.log(decoded);
-        
-    } catch (err) {
-        req.status(400);
-        throw err;
+    if (req.cookies.access_token){
+        try {
+            const token = req.cookies.access_token;
+            const decoded = jwt.verify(token, process.env.COOKIE_SECRET);
+            console.log(decoded);
+            
+        } catch (err) {
+            res.redirect('/');
+            next(err);
+        }
     }
     next();
 });
@@ -100,7 +102,7 @@ app.post('/login', (req, res)=>{
             res.cookie('access_token', token,{
                 maxAge: 900000, 
                 httpOnly: true,
-                secure: process.env.IS_PRODUCTION
+                secure: (process.env.IS_PRODUCTION == 'true'? true : false)
             });
             res.redirect('/');
         } else {
