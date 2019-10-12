@@ -5,7 +5,26 @@ const hbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
+const Sequelize = require('sequelize');
 const app = express();
+
+
+if ((process.env.IS_PRODUCTION != 'true')){
+    const sequelize = new Sequelize({
+        dialect: 'sqlite',
+        storage: process.env.SQLITE_PATH
+    });
+    sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
+} else {
+    // postgres
+}
 
 // Middleware
 app.use('/static', express.static(path.join(__dirname, '/public')));
