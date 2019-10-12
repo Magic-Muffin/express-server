@@ -15,8 +15,12 @@
             </ul>
         </nav>
         <div>
-            <a id="login-button" href="/login"><button>Login</button></a>
-            <a id="register-button" href="/register"><button>Register</button></a>
+            {{#if isLoggedIn}}
+                <a id="login-button" href="/"><button>Logout</button></a>
+            {{else}}
+                <a id="login-button" href="/login"><button>Login</button></a>
+                <a id="register-button" href="/register"><button>Register</button></a>
+            {{/if}}
         </div> 
     </header>
     <div class="main">

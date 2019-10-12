@@ -57,7 +57,8 @@ function doRegister(username, email, password){
 // Routes
 app.get('/', (req, res)=>{
     res.render('home', {
-        title: "Home"
+        title: "Home",
+        isLoggedIn: false
     });
 });
 
@@ -111,6 +112,11 @@ app.post('/login', (req, res)=>{
     } else {
         res.redirect('/login');
     }
+});
+
+app.get('/logout', (req, res)=>{
+    req.clearCookie('access_token');
+    res.redirect('/');
 });
 
 // Start server
